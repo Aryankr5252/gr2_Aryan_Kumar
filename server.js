@@ -20,6 +20,10 @@ app.use("/api/user", userRouter)
 app.use("/api/", blogRouter)
 app.use("/api/upload", fileRouter)
 
+app.get("/", (req, res) => {
+    res.send("sb chl rha");
+})
+
 //server is running
 app.listen(port, () => {
     console.log(`The server is running on the port ${port}`);
