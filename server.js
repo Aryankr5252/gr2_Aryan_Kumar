@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { dbconnect } from "./config/db.js";
+import userRouter from "./routes/userRouter.js";
 
 const app = express();
 app.use(express.json());
@@ -12,9 +13,7 @@ const port = process.env.PORT;
 //database is connected
 dbconnect();
 
-app.get("/", (req, res) => {
-    res.send("hello");
-})
+app.use("/api/user", userRouter)
 
 //server is running
 app.listen(port, () => {
