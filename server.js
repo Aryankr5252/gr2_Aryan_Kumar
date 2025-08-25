@@ -10,7 +10,7 @@ import fileRouter from "./routes/uploadRouter.js";
 const app = express();
 app.use(express.json());
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 //database is connected
 dbconnect();
