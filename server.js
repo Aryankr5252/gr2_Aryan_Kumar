@@ -14,6 +14,7 @@ const port = process.env.PORT;
 dbconnect();
 
 app.use("/api/user", userRouter)
+// app.use("/api/blog", blog)
 
 //server is running
 app.listen(port, () => {
