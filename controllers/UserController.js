@@ -3,11 +3,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
+import { registerEmail } from "../utils/emailService.js";
 
 export const createController = async (req, res ) => {
     try{
         let {username, email, password} = req.body;
-        let logged = userModel.findOne({email});
+        let logged = await userModel.findOne({email});
         if(logged) return res.json({
             message: "bhai tera id pehle se bna hua hai."
         })
@@ -22,7 +23,7 @@ export const createController = async (req, res ) => {
                 })
                 let token = jwt.sign({ email }, `${process.env.SECRET_KEY}`);
                 res.cookie("token", token);
-                // await registerEmail(email,username);
+                await registerEmail(email,username);
                 res.status(201).json({
                     success: true,
                     message: "User created Successfully",
